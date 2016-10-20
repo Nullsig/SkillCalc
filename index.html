@@ -260,6 +260,43 @@
 			
 			return value;
 		}
+		
+		function modifyStr(value){
+		
+		}
+		
+		function modifyAgi(value){
+		
+		}
+		
+		function modifyCon(value){
+			var statCap = 100 + parseInt(value)-10;
+			$('#HP').html(statCap.toString());
+		}
+		
+		function modifyInt(value){
+			modifyCaps();
+		}
+		
+		function modifyWill(value){
+			var statCap = 100 + parseInt(value)-10;
+			$('#Stam').html(statCap.toString());
+			
+			statCap = 100 + parseInt(value)*2;
+			var overload = statCap * 2;
+			$('#CarryWeight').html(statCap.toString()+"/"+overload.toString());
+		}
+		
+		function modifyCaps(){
+			var statCap = (parseInt($('#intelligence').val())-10) + parseInt($('#statCap').val());
+		
+		
+			$('#MinorCap').html(statCap.toString());
+			$('#CombatCap').html(statCap.toString());
+			$('#CraftingCap').html(statCap.toString());
+		}
+		
+		
 	</script>
 	<style type="text/css">
         .ui-spinner-input{
@@ -296,28 +333,82 @@
 		</center>
 	</div>
 </div>
-<div id='statblock' style='float:left;border:1px solid black;margin:30px;'>
+<div id='statblock' style='float:left;border:1px solid black;margin:30px;width:400px'>
 	<table>
 		<tr>
-			<td>Stat Cap</td>
-			<td><input style='text-align:right;width:50px;' type='number' name='statCap' value='1000' onchange="$('#minorCap').html(this.value);$('#combatCap').html(this.value);$('#craftingCap').html(this.value);"></td>
+			<td class='rowhead'>Stat Cap</td>
+			<td class='rowdata'><input type='number' id='statCap' name='statCap'  min="0" value='1000' onchange="modifyCaps();"></td>
 		</tr>
 		<tr>
-			<td>Crafting Points Spent</td>
-			<td>
+			<td class='rowhead'>Crafting Points Spent</td>
+			<td class='rowdata'>
 				<span id='CraftingPoints'>0</span> / <span id='CraftingCap'>1000</span>
 			</td>
 		</tr>
 		<tr>
-			<td>Combat Points Spent</td>
-			<td>
+			<td class='rowhead'>Combat Points Spent</td>
+			<td class='rowdata'>
 				<span id='CombatPoints'>0</span> / <span id='CombatCap'>1000</span>
 			</td>
 		</tr>
 		<tr>
-			<td>Minor Points Spent</td>
-			<td>
+			<td class='rowhead'>Minor Points Spent</td>
+			<td class='rowdata'>
 				<span id='MinorPoints'>0</span> / <span id='MinorCap'>1000</span>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Attribute Points Spent</td>
+			<td class='rowdata'>
+				<span id='AttrPoints'>50</span> / <span id='AttrCap'>350</span>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Strength</td>
+			<td class='rowdata'>
+				<input style='text-align:center' type='number' id="strength" name="strength" value='10' min="10" max="110" onchange='modifyStr(this.value);'>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Agility</td>
+			<td class='rowdata'>
+				<input style='text-align:center' type='number' id="agility" name="agility" value='10' min="10" max="110" onchange='modifyAgi(this.value);'>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Constitution</td>
+			<td class='rowdata'>
+				<input style='text-align:center' type='number' id="constitution" name="constitution" value='10' min="10" max="110" onchange='modifyCon(this.value);'>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Intelligence</td>
+			<td class='rowdata'>
+				<input style='text-align:center' type='number' id="intelligence" name="intelligence" value='10' min="10" max="110" onchange='modifyInt(this.value);'>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Willpower</td>
+			<td class='rowdata'>
+				<input style='text-align:center' type='number' id="willpower" name="willpower" value='10' min="10" max="110" onchange='modifyWill(this.value);'>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Hit Points</td>
+			<td class='rowdata'>
+				<span id='HP'>100</span>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Stamina</td>
+			<td class='rowdata'>
+				<span id='Stam'>100</span>
+			</td>
+		</tr>
+		<tr>
+			<td class='rowhead'>Carry Weight <small>(base max / over burdened)</small></td>
+			<td class='rowdata'>
+				<span id='CarryWeight'>120/240</span>
 			</td>
 		</tr>
 	</table>
@@ -375,7 +466,7 @@
 		{{/if}}
 	</table>
 </script>
-<script id='craftingView-template'>
+<script id='craftingView-template' type='text/x-handlebars-template'>
 	<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 	</div>
 	<div style='clear:both'></div>
@@ -387,7 +478,7 @@
 	<div id='huntingTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 	</div>
 </script>
-<script id='combatView-template'>
+<script id='combatView-template' type='text/x-handlebars-template'>
 	<div id='chivalryTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 	</div>
 	<div style='clear:both'></div>
@@ -410,7 +501,7 @@
 		<span class="stretch"></span>
 	</div>
 </script>
-<script id='minorView-template'>
+<script id='minorView-template' type='text/x-handlebars-template'>
 	<div id='armorsTree' class='multiTree' style='margin-left:20px;margin-right:20px;margin-top:20px;margin-bottom:20px;'>
 		<div id='movementTree' class='tree leaf'></div>
 		<div id='generalActionsTree' class='tree leaf'></div>

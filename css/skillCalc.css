@@ -17,6 +17,18 @@ td,th{
 	color: white;
 }
 
+td.rowhead{
+	font-weight:bold;
+	width:350px;
+}
+
+td.rowdata{
+	text-align:right;
+}
+
+td.rowdata > input{
+	width:50px;
+}
 
 /*Now the CSS*/
 * {margin: 0; padding: 0;}
