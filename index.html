@@ -262,23 +262,81 @@
 		}
 		
 		function modifyStr(value){
-		
+			var currentTotal = parseInt($('#constitution').val()) + parseInt($('#agility').val()) + parseInt($('#intelligence').val()) + parseInt($('#willpower').val())
+			
+			if(currentTotal + parseInt(value) > 150){
+				value = 150 - currentTotal;
+				currentTotal = 150;
+			}else{
+				currentTotal += parseInt(value);
+			}
+			
+			$('#strength').val(value.toString());
+			$('#AttrPoints').html(currentTotal.toString());
+			
 		}
 		
 		function modifyAgi(value){
-		
+			var currentTotal = parseInt($('#constitution').val()) + parseInt($('#strength').val()) + parseInt($('#intelligence').val()) + parseInt($('#willpower').val())
+			
+			if(currentTotal + parseInt(value) > 150){
+				value = 150 - currentTotal;
+				currentTotal = 150;
+			}else{
+				currentTotal += parseInt(value);
+			}
+			
+			$('#agility').val(value.toString());
+			$('#AttrPoints').html(currentTotal.toString());
 		}
 		
 		function modifyCon(value){
+			var currentTotal = parseInt($('#agility').val()) + parseInt($('#strength').val()) + parseInt($('#intelligence').val()) + parseInt($('#willpower').val())
+			
+			if(currentTotal + parseInt(value) > 150){
+				value = 150 - currentTotal;
+				currentTotal = 150;
+			}else{
+				currentTotal += parseInt(value);
+			}
+			
+			$('#constitution').val(value.toString());
+			$('#AttrPoints').html(currentTotal.toString());
+		
+		
 			var statCap = 100 + parseInt(value)-10;
 			$('#HP').html(statCap.toString());
 		}
 		
 		function modifyInt(value){
+			var currentTotal = parseInt($('#constitution').val()) + parseInt($('#strength').val()) + parseInt($('#agility').val()) + parseInt($('#willpower').val())
+			
+			if(currentTotal + parseInt(value) > 150){
+				value = 150 - currentTotal;
+				currentTotal = 150;
+			}else{
+				currentTotal += parseInt(value);
+			}
+			
+			$('#intelligence').val(value.toString());
+			$('#AttrPoints').html(currentTotal.toString());
+		
 			modifyCaps();
 		}
 		
 		function modifyWill(value){
+			var currentTotal = parseInt($('#constitution').val()) + parseInt($('#strength').val()) + parseInt($('#intelligence').val()) + parseInt($('#agility').val())
+			
+			if(currentTotal + parseInt(value) > 150){
+				value = 150 - currentTotal;
+				currentTotal = 150;
+			}else{
+				currentTotal += parseInt(value);
+			}
+			
+			$('#willpower').val(value.toString());
+			$('#AttrPoints').html(currentTotal.toString());
+		
 			var statCap = 100 + parseInt(value)-10;
 			$('#Stam').html(statCap.toString());
 			
@@ -295,7 +353,6 @@
 			$('#CombatCap').html(statCap.toString());
 			$('#CraftingCap').html(statCap.toString());
 		}
-		
 		
 	</script>
 	<style type="text/css">
@@ -360,7 +417,7 @@
 		<tr>
 			<td class='rowhead'>Attribute Points Spent</td>
 			<td class='rowdata'>
-				<span id='AttrPoints'>50</span> / <span id='AttrCap'>350</span>
+				<span id='AttrPoints'>50</span> / <span id='AttrCap'>150</span>
 			</td>
 		</tr>
 		<tr>
