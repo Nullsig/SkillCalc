@@ -19,11 +19,12 @@ td,th{
 
 td.rowhead{
 	font-weight:bold;
-	width:350px;
+	width:300px;
 }
 
 td.rowdata{
 	text-align:right;
+	width:100px;
 }
 
 td.rowdata > input{
