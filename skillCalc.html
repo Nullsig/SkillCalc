@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Skill Calc</title>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/handlebars.min-latest.js"></script>
+	<script src="js/skillCalcData.js"></script>
+	<script src="js/skillCalcTree.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/skillCalc.css">
+	<script>
+		//Initialize Jquery Elements
+		var currentNode;
+		$( function() {
+			loadCrafting();
+		} );
+		
+		function loadCrafting(){
+			$('#tree').html($("#craftingView-template").html());
+					
+			//Crafting//
+			artisanTree.render($('#artisanTree'));
+			artisanTree.traverseBF(initializeNode);		
+			$('#artisanImage').attr('src',artisan.imageSrc);
+			naturesLoreTree.render($('#naturesLoreTree'));
+			naturesLoreTree.traverseBF(initializeNode);		
+			$('#naturesLoreImage').attr('src',naturesLore.imageSrc);				
+			huntingTree.render($('#huntingTree'));
+			huntingTree.traverseBF(initializeNode);
+			$('#huntingImage').attr('src',hunting.imageSrc);
+			
+			//center the divs
+			var newWidth = parseInt($('#artisanTree > ul > li').css("width")) + parseInt($('#artisanTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#artisanTree').css('width',newWidth);
+			newWidth = parseInt($('#naturesLoreTree > ul > li').css("width")) + parseInt($('#naturesLoreTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#naturesLoreTree').css('width',newWidth);
+			newWidth = parseInt($('#huntingTree > ul > li').css("width")) + parseInt($('#huntingTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#huntingTree').css('width',newWidth);
+		}
+		
+		function loadCombat(){
+			//Combat//
+			$('#tree').html($("#combatView-template").html());
+			chivalryTree.render($('#chivalryTree'));
+			chivalryTree.traverseBF(initializeNode);
+			$('#chivalryImage').attr('src',chivalry.imageSrc);
+			
+			chainmailArmorsTree.render($('#chainmailArmorsTree'));
+			chainmailArmorsTree.traverseBF(initializeNode);
+			$('#chainmailArmorsImage').attr('src',chainmailArmors.imageSrc);
+			scaleArmorsTree.render($('#scaleArmorsTree'));
+			scaleArmorsTree.traverseBF(initializeNode);
+			$('#scaleArmorsImage').attr('src',scaleArmors.imageSrc);
+			plateArmorsTree.render($('#plateArmorsTree'));
+			plateArmorsTree.traverseBF(initializeNode);
+			$('#plateArmorsImage').attr('src',plateArmors.imageSrc);
+			
+			warriorTree.render($('#warriorTree'));
+			warriorTree.traverseBF(initializeNode);
+			$('#warriorImage').attr('src',warrior.imageSrc);
+
+			equipmentMaintainTree.render($('#equipmentMaintainTree'));
+			equipmentMaintainTree.traverseBF(initializeNode);
+			$('#equipmentMaintainImage').attr('src',equipmentMaintain.imageSrc);
+			battleSurvivalTree.render($('#battleSurvivalTree'));
+			battleSurvivalTree.traverseBF(initializeNode);
+			$('#battleSurvivalImage').attr('src',battleSurvival.imageSrc);
+			drillTree.render($('#drillTree'));
+			drillTree.traverseBF(initializeNode);
+			$('#drillImage').attr('src',drill.imageSrc);
+			
+			var newWidth = parseInt($('#chivalryTree > ul > li').css("width")) + parseInt($('#chivalryTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#chivalryTree').css('width',newWidth);
+			newWidth = parseInt($('#warriorTree > ul > li').css("width")) + parseInt($('#warriorTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#warriorTree').css('width',newWidth);
+			newWidth = parseInt($('#chainmailArmorsTree > ul > li').css("width")) + parseInt($('#chainmailArmorsTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#chainmailArmorsTree').css('width',newWidth);
+			newWidth = parseInt($('#scaleArmorsTree > ul > li').css("width")) + parseInt($('#scaleArmorsTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#scaleArmorsTree').css('width',newWidth);
+			newWidth = parseInt($('#plateArmorsImage > ul > li').css("width")) + parseInt($('#plateArmorsImage > ul > li').css("padding-left")) * 2 + 1;
+			$('#plateArmorsImage').css('width',newWidth);
+			newWidth = parseInt($('#equipmentMaintainTree > ul > li').css("width")) + parseInt($('#equipmentMaintainTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#equipmentMaintainTree').css('width',newWidth);
+			newWidth = parseInt($('#battleSurvivalTree > ul > li').css("width")) + parseInt($('#battleSurvivalTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#battleSurvivalTree').css('width',newWidth);
+			newWidth = parseInt($('#drillTree > ul > li').css("width")) + parseInt($('#drillTree > ul > li').css("padding-left")) * 2 + 1;
+			$('#drillTree').css('width',newWidth);
+			
+
+		}
+		
+		function loadMinor(){
+			//Minor//
+			$('#tree').html($("#minorView-template").html());
+			
+			movementTree.render($('#movementTree'));
+			movementTree.traverseBF(initializeNode);
+			$('#movementImage').attr('src',movement.imageSrc);
+			generalActionsTree.render($('#generalActionsTree'));
+			generalActionsTree.traverseBF(initializeNode);
+			$('#generalActionsImage').attr('src',generalActions.imageSrc);
+			swimmingTree.render($('#swimmingTree'));
+			swimmingTree.traverseBF(initializeNode);
+			$('#swimmingImage').attr('src',swimming.imageSrc);
+			authorityTree.render($('#authorityTree'));
+			authorityTree.traverseBF(initializeNode);
+			$('#authorityImage').attr('src',authority.imageSrc);	
+			horsebackRidingTree.render($('#horsebackRidingTree'));
+			horsebackRidingTree.traverseBF(initializeNode);
+			$('#horsebackRidingImage').attr('src',horsebackRiding.imageSrc);
+			pietyTree.render($('#pietyTree'));
+			pietyTree.traverseBF(initializeNode);
+			$('#pietyImage').attr('src',piety.imageSrc);
+			mentoringTree.render($('#mentoringTree'));
+			mentoringTree.traverseBF(initializeNode);
+			$('#mentoringImage').attr('src',mentoring.imageSrc);
+			artsTree.render($('#artsTree'));
+			artsTree.traverseBF(initializeNode);
+			$('#artsImage').attr('src',arts.imageSrc);
+					
+		}
+		
+		$( function() {
+			$( document ).tooltip({
+				items: "li",
+				track: true,
+				content: function() {
+					var element = $( this );
+					var skill = eval(element.context.firstElementChild.children[2].firstChild.id);
+					
+					var theTemplateScript = $("#tooltip-template").html();
+					var theTemplate = Handlebars.compile(theTemplateScript);
+					var theCompiledHtml = theTemplate(skill);
+					return theCompiledHtml;
+				}
+			});
+		} );
+		  
+		function inputChange(skillName, value){
+			//pull the skill
+			var skillData = eval(skillName);
+			var currentTree = eval(skillData.treeName);
+		
+			//find the node in the tree set global Current Node to that node's value.			
+			currentTree.traverseBF(function returnChild(node){
+										if(node.data.idName == skillName){
+											currentNode = node;
+										}
+									});
+			value = parseInt(checkParent(skillName,value));
+			value = parseInt(checkChild(skillName,value));
+			
+			
+			//check that the tree can handle that many points.
+			var treeCap = parseInt($('#'+currentNode.data.skillType+'Cap').html());
+			var curTotal = 0;
+			$('.'+currentNode.data.skillType).each(function(){
+				if(this.id != skillName){
+					curTotal += parseInt($('#'+this.id)[0].value);
+				}
+			});
+			
+			if(curTotal + parseInt(value) > treeCap){
+				value = treeCap - curTotal;
+				curTotal = treeCap;
+				$('#'+skillName)[0].value = value;
+			}else{
+				curTotal = curTotal + parseInt(value);
+			}
+			
+			currentNode.data.value = value;
+			$('#'+currentNode.data.skillType+'Points').html(curTotal);
+		}
+		
+		function checkParent(skillName, value){//Logic for changing and validing the value.						
+			if(currentNode.parent == null){
+				//check that value is within sanity
+				if(value > 100){ 
+					$('#'+skillName)[0].value = 100;
+					value=100;
+				}
+				if(value < 0){
+					$('#'+skillName)[0].value = 0;
+					value=0;
+				}
+				
+				//check if value exceeded 30 and enable child nodes if so
+				if(value >= 30){
+					$.each(currentNode.children, function(key, val) {			
+					   $('#'+val.data.idName+'Image').attr('src',val.data.imageSrc);
+					});
+				}else{
+					$.each(currentNode.children, function(key, val) {			
+					   $('#'+val.data.idName+'Image').attr('src',val.data.disabledImageSrc);
+					});
+				}
+			}else{
+				//get parent value
+				var parentSkillValue = $('#' + currentNode.parent.data.idName)[0].value;
+				if(parentSkillValue < 30){
+					$('#'+skillName)[0].value = 0;
+					value=0;
+				}else{
+					if(parentSkillValue >= 30 && parentSkillValue < 60){
+						if(value > 29){
+							$('#'+skillName)[0].value = 29;
+							value=29;
+						}
+					}else{
+						if(value > 100){ 
+							$('#'+skillName)[0].value = 100;
+							value=100;
+						}
+						if(value < 0){
+							$('#'+skillName)[0].value = 0;
+							value=0;
+						}
+						
+						if(value > 30){
+							$.each(currentNode.children, function(key, val) {			
+							   $('#'+val.data.idName+'Image').attr('src',val.data.imageSrc);
+							});
+						}else{
+							$.each(currentNode.children, function(key, val) {			
+							   $('#'+val.data.idName+'Image').attr('src',val.data.disabledImageSrc);
+							});
+						}
+					}
+				}
+			}
+			
+			return value;
+		}
+		
+		function checkChild(skillName,value){
+			//if the value drops below 60 any child nodes can't have points above 29. If such children exist, the value won't be able to decrease past 60
+			if(value < 60){
+				$.each(currentNode.children, function(key, val) {			
+				    var childValue = parseInt($('#'+val.data.idName)[0].value);
+				    if(childValue > 29){
+						$('#'+skillName)[0].value = 60;
+						value=60;
+				    }
+				});
+			}
+			
+			//same thing. Values below 30 mean 0 points can be invested in child nodes. If any points are invested value is locked to 30
+			if(value < 30){
+				$.each(currentNode.children, function(key, val) {			
+				    var childValue = parseInt($('#'+val.data.idName)[0].value);
+				    if(childValue > 0){
+						$('#'+skillName)[0].value = 30;
+						value=30;
+				    }
+				});
+			}
+			
+			return value;
+		}
+	</script>
+	<style type="text/css">
+        .ui-spinner-input{
+			width: 32px;
+			text-align:right;
+			font-size: .8em;
+			height: 9px;
+		}
+		
+		.ui-spinner-button{
+			background-color:black
+		}
+     </style>
+</head>
+<body style='background:#635537'>
+<div style='margin:30px;width:40%;height:550px;float:left'>
+	<div id='tree' class='tree' style='border:1px solid black;width:100%;height:450px;overflow-y:auto;overflow-x:auto;float:left'>
+		<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+		</div>
+		<div style='clear:both'></div>
+		<br><br>
+		<div id='naturesLoreTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+		</div>
+		<div style='clear:both'></div>
+		<br><br>
+		<div id='huntingTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+		</div>
+	</div>
+	<div style='width:100%;height:100px;float:left'>
+		<center>
+			<input type="image" src="images/craftingButton.png" onclick='loadCrafting();'>
+			<input type="image" src="images/combatButton.png" onclick='loadCombat();'>
+			<input type="image" src="images/minorButton.png" onclick='loadMinor();'>
+		</center>
+	</div>
+</div>
+<div id='statblock' style='float:left;border:1px solid black;margin:30px;'>
+	<table>
+		<tr>
+			<td>Stat Cap</td>
+			<td><input style='text-align:right;width:50px;' type='number' name='statCap' value='1000' onchange="$('#minorCap').html(this.value);$('#combatCap').html(this.value);$('#craftingCap').html(this.value);"></td>
+		</tr>
+		<tr>
+			<td>Crafting Points Spent</td>
+			<td>
+				<span id='CraftingPoints'>0</span> / <span id='CraftingCap'>1000</span>
+			</td>
+		</tr>
+		<tr>
+			<td>Combat Points Spent</td>
+			<td>
+				<span id='CombatPoints'>0</span> / <span id='CombatCap'>1000</span>
+			</td>
+		</tr>
+		<tr>
+			<td>Minor Points Spent</td>
+			<td>
+				<span id='MinorPoints'>0</span> / <span id='MinorCap'>1000</span>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style='clear:both'></div>	
+<script id='li-template' type='text/x-handlebars-template'>
+	<a href='#'>
+		<img id='{{idName}}Image' src='{{disabledImageSrc}}' /><br>
+		<input style='text-align:center' class='spinner {{skillType}}' id="{{idName}}" name="{{idName}}" value='{{value}}' >
+	</a>	
+</script>
+
+<script id='tooltip-template' type='text/x-handlebars-template'>
+	<table class='toolTip' border='1' style='border-collapse:collapse;border:1px solid black'>
+		<tr>
+			<th colspan='2'>
+				<big><b>{{{displayName}}}</b></big>
+			</th>
+		</tr>
+		{{#if allText}}
+		<tr>
+			<td class='skillChart'>All</td>
+			<td class='skillText'>{{{allText}}}</td>
+		</tr>
+		{{/if}}
+		{{#if zeroText}}
+		<tr>
+			<td class='skillChart'>0</td>
+			<td class='skillText'>{{{zeroText}}}</td>
+		</tr>
+		{{/if}}
+		{{#if thirtyText}}
+		<tr>
+			<td class='skillChart'>30</td>
+			<td class='skillText'>{{{thirtyText}}}</td>
+		</tr>
+		{{/if}}
+		{{#if sixtyText}}
+		<tr>
+			<td class='skillChart'>60</td>
+			<td class='skillText'>{{{sixtyText}}}</td>
+		</tr>
+		{{/if}}
+		{{#if ninetyText}}
+		<tr>
+			<td class='skillChart'>90</td>
+			<td class='skillText'>{{{ninetyText}}}</td>
+		</tr>
+		{{/if}}
+		{{#if hundredText}}
+		<tr>
+			<td class='skillChart'>100</td>
+			<td class='skillText'>{{{hundredText}}}</td>
+		</tr>
+		{{/if}}
+	</table>
+</script>
+<script id='craftingView-template'>
+	<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+	</div>
+	<div style='clear:both'></div>
+	<br><br>
+	<div id='naturesLoreTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+	</div>
+	<div style='clear:both'></div>
+	<br><br>
+	<div id='huntingTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+	</div>
+</script>
+<script id='combatView-template'>
+	<div id='chivalryTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+	</div>
+	<div style='clear:both'></div>
+	<br><br>
+	<div id='armorsTree' class='multiTree' style='margin-left:20px;margin-right:20px;margin-top:20px;margin-bottom:20px;'>
+		<div id='chainmailArmorsTree' class='tree leaf'></div>
+		<div id='scaleArmorsTree' class='tree leaf'></div>
+		<div id='plateArmorsTree' class='tree leaf'></div>
+		<span class="stretch"></span>
+	</div>
+	<div style='clear:both'></div>
+	<br><br>
+	<div id='warriorTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
+	</div>
+	<div style='clear:both'></div>
+	<div id='othersTree' class='multiTree' style='margin-left:20px;margin-right:20px;margin-top:20px;margin-bottom:20px;'>
+		<div id='battleSurvivalTree' class='tree leaf'></div>
+		<div id='equipmentMaintainTree' class='tree leaf'></div>
+		<div id='drillTree' class='tree leaf'></div>
+		<span class="stretch"></span>
+	</div>
+</script>
+<script id='minorView-template'>
+	<div id='armorsTree' class='multiTree' style='margin-left:20px;margin-right:20px;margin-top:20px;margin-bottom:20px;'>
+		<div id='movementTree' class='tree leaf'></div>
+		<div id='generalActionsTree' class='tree leaf'></div>
+		<div id='horsebackRidingTree' class='tree leaf'></div>
+		<div id='swimmingTree' class='tree leaf'></div>
+		<span class="stretch"></span>
+	</div>
+	<div style='clear:both'></div>
+	<br><br>
+	<div id='othersTree' class='multiTree' style='margin-left:20px;margin-right:20px;margin-top:20px;margin-bottom:20px;'>
+		<div id='authorityTree' class='tree leaf'></div>
+		<div id='pietyTree' class='tree leaf'></div>
+		<div id='mentoringTree' class='tree leaf'></div>
+		<div id='artsTree' class='tree leaf'></div>
+		<span class="stretch"></span>
+	</div>
+</script>
+</body>
+</html>
