@@ -10,7 +10,11 @@ The JQuery Spinners can be manipulated with up/down and pgup/pgdn keys to easily
 
 
 Credits To:
+
 Code for Trees and Nodes from https://code.tutsplus.com/
+
 CSS for Tree rendering from http://thecodeplayer.com/walkthrough/css3-family-tree
+
 Images and Tool Tip Text from http://lifeisfeudal.gamepedia.com/
+
 All other code written and maintained by Peter Braun: sollembas@gmail.com 
