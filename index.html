@@ -520,7 +520,6 @@
 
 			function getVal(elm){
 				var v = elm.id;
-				console.log(v)
 				return v;
 			}
 
@@ -529,7 +528,12 @@
 			});
 		}
 		
-		
+		function saveString(){
+			var serializedData = ""
+			$("input").each(function() {
+			   if($(this).val() > 0)  serializedData = serializedData + this.id+"="+$(this).val()+";";
+			});
+		}
 		
 		
 	</script>
@@ -547,7 +551,7 @@
      </style>
 </head>
 <body style='background:#635537'>
-<div style='margin:30px 10px;width:752px;height:550px;float:left'>
+<div style='margin:10px;width:752px;height:550px;float:left'>
 	<div id='tree' class='tree' style='border:1px solid black;width:100%;height:450px;overflow-y:auto;overflow-x:auto;float:left'>
 		<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 		</div>
@@ -568,7 +572,7 @@
 		</center>
 	</div>
 </div>
-<div id='statblock' style='float:left;border:1px solid black;margin:30px;width:350px'>
+<div id='statblock' style='float:left;border:1px solid black;margin:10px;width:350px'>
 	<table>
 		<tr>
 			<td class='rowhead'>Stat Cap</td>
@@ -651,6 +655,7 @@
 <div style='clear:both'></div>	
 <div>
 	<center>
+	<h2 style='color:white;	font-family:arial;'>Summary Table</h2>
 	<table id='summaryTable'>
 		<tr>
 			<th style='border-bottom: 3px solid white'>Skill</th>
