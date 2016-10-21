@@ -529,13 +529,57 @@
 		}
 		
 		function saveString(){
-			var serializedData = ""
+			var jsonData = {};
 			$("input").each(function() {
-			   if($(this).val() > 0)  serializedData = serializedData + this.id+"="+$(this).val()+";";
-			});
+							   if($(this).val() > 0){
+								  jsonData[this.id] = $(this).val();
+							   }
+							});
+			var saveStr = JSON.stringify(jsonData);
+			saveStr = btoa(saveStr);
+			$('#saveString').val(saveStr);
 		}
 		
-		
+		//eyJhcnRpc2FuIjoiNjIiLCJkaWdnaW5nIjoiNDQiLCJtaW5pbmciOiIyMCIsInN0YXRDYXAiOiIxMDAwIiwic3RyZW5ndGgiOiIxMCIsImFnaWxpdHkiOiIxMCIsImNvbnN0aXR1dGlvbiI6IjEwIiwiaW50ZWxsaWdlbmNlIjoiMTAiLCJ3aWxscG93ZXIiOiIxMCJ9
+		function loadString(){
+			var loadStr = $('#saveString').val();
+			loadStr = atob(loadStr);
+			var jsonData = JSON.parse(loadStr);
+			
+			$.each(jsonData, function(i, item) {
+				if(eval(i).displayName != null){
+					$('#' + i).val(item);
+					inputChange(i,item);
+				}else{
+					switch(i){
+						case "statCap":
+							$('#statCap').val(item);
+							modifyCaps();
+							break;
+						case "strength":
+							$('#strength').val(item);
+							modifyStr(item);
+							break;
+						case "agility":
+							$('#agility').val(item);
+							modifyAgi(item);
+							break;
+						case "intelligence":
+							$('#intelligence').val(item);
+							modifyInt(item);
+							break;
+						case "constitution":
+							$('#constitution').val(item);
+							modifyCon(item);
+							break;
+						case "willpower":
+							$('#willpower').val(item);
+							modifyWill(item);
+							break;
+					}
+				}
+			});
+		}
 	</script>
 	<style type="text/css">
         .ui-spinner-input{
@@ -572,8 +616,8 @@
 		</center>
 	</div>
 </div>
-<div id='statblock' style='float:left;border:1px solid black;margin:10px;width:350px'>
-	<table>
+<div id='' style='float:left;margin:10px;width:350px'>
+	<table id='statblock' style='border:1px solid black;'>
 		<tr>
 			<td class='rowhead'>Stat Cap</td>
 			<td class='rowdata'><input type='number' id='statCap' name='statCap'  min="0" value='1000' onchange="modifyCaps();"></td>
@@ -650,7 +694,8 @@
 				<span id='CarryWeight'>120/240</span>
 			</td>
 		</tr>
-	</table>
+	</table><br>
+	<input type='text' id='saveString' size='30'>&nbsp;&nbsp;&nbsp;<a href="#" class="myButton" onclick='saveString();'>Save</a>&nbsp;&nbsp;<a href="#" class="myButton" onclick="loadString();">Load</a>
 </div>
 <div style='clear:both'></div>	
 <div>
