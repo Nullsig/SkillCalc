@@ -14,8 +14,31 @@
 	<script>
 		//Initialize Jquery Elements
 		var currentNode;
+		var f_rid = 1;
+		
 		$( function() {
 			loadCrafting();
+			
+			//initialize summary table rows
+			manageSummaryTable(artisanTree._root);
+			manageSummaryTable(naturesLoreTree._root);;
+			manageSummaryTable(huntingTree._root);
+			manageSummaryTable(chivalryTree._root);
+			manageSummaryTable(warriorTree._root);
+			manageSummaryTable(chainmailArmorsTree._root);
+			manageSummaryTable(scaleArmorsTree._root);
+			manageSummaryTable(plateArmorsTree._root);
+			manageSummaryTable(equipmentMaintainTree._root);
+			manageSummaryTable(battleSurvivalTree._root);
+			manageSummaryTable(drillTree._root);
+			manageSummaryTable(movementTree._root);
+			manageSummaryTable(generalActionsTree._root);
+			manageSummaryTable(swimmingTree._root);
+			manageSummaryTable(authorityTree._root);
+			manageSummaryTable(horsebackRidingTree._root);
+			manageSummaryTable(pietyTree._root);
+			manageSummaryTable(mentoringTree._root);
+			manageSummaryTable(artsTree._root);
 		} );
 		
 		function loadCrafting(){
@@ -170,6 +193,8 @@
 			}else{
 				curTotal = curTotal + parseInt(value);
 			}
+			
+			manageSummaryTable(currentNode,value);
 			
 			currentNode.data.value = value;
 			$('#'+currentNode.data.skillType+'Points').html(curTotal);
@@ -354,6 +379,207 @@
 			$('#CraftingCap').html(statCap.toString());
 		}
 		
+		function summaryAddRow(skillName, skillLevel, skillText){
+			var skillSort = 100;
+			
+			switch(skillLevel){
+				case "All":
+					skillSort = 0;
+					break;
+				case "0":
+					skillSort = 1;
+					break;
+				case "30":
+					skillSort = 2;
+					break;
+				case "60":
+					skillSort = 3;
+					break;
+				case "90":
+					skillSort = 4;
+					break;
+				case "100":
+					skillSort = 5;
+					break;
+			}
+		
+			$('#summaryTable').append("<tr id='" + skillName + skillSort.toString() + "'><td valign='top' style='text-align:center'>"+skillName+"</td><td  valign='top' style='text-align:center'>"+skillLevel.toString()+"</td><td>" + skillText + "</td></tr>");
+		}
+		
+		function summaryRemoveRow(skillName, skillLevel, skillText){
+			switch(skillLevel){
+				case "All":
+					skillSort = 0;
+					break;
+				case "0":
+					skillSort = 1;
+					break;
+				case "30":
+					skillSort = 2;
+					break;
+				case "60":
+					skillSort = 3;
+					break;
+				case "90":
+					skillSort = 4;
+					break;
+				case "100":
+					skillSort = 5;
+					break;
+			}
+			$('#' + skillName + skillSort.toString()).remove();
+		}
+		
+		function manageSummaryTable(node, value){
+			if(node.parent == null && value == null){
+				//initializing a root of a tree
+				if(node.data.allText != "") summaryAddRow(node.data.displayName,"All",node.data.allText);
+				if(node.data.zeroText != "") summaryAddRow(node.data.displayName,"0",node.data.zeroText);
+			}else{
+		
+				var direction = node.data.value - parseInt(value)
+				
+				if(direction > 0){
+					//value is decreasing
+					if(node.data.value >= 30 && parseInt(value) < 30){
+						//remove Thirty data
+						if(node.data.thirtyText != "") summaryRemoveRow(node.data.displayName,"30",node.data.thirtyText);
+						
+						//remove child node "All" and "Zero" data
+						$.each(node.children, function(key, val) {			
+							if(val.data.allText != "") summaryRemoveRow(val.data.displayName,"All",val.data.allText);
+							if(val.data.zeroText != "") summaryRemoveRow(val.data.displayName,"0",val.data.zeroText);
+						});
+					}
+					
+					if(node.data.value >= 60 && parseInt(value) < 60){
+						//remove 60 Data
+						if(node.data.sixtyText != "") summaryRemoveRow(node.data.displayName,"60",node.data.sixtyText);
+						
+					}
+					
+					if(node.data.value >= 90 && parseInt(value) < 90){
+						//remove 90 Data
+						if(node.data.ninetyText != "") summaryRemoveRow(node.data.displayName,"90",node.data.ninetyText);
+					}
+					
+					if(node.data.value >= 100 && parseInt(value) < 100){
+						//remove 100 Data
+						if(node.data.hundredText != "") summaryRemoveRow(node.data.displayName,"100",node.data.hundredText);
+					}
+					
+				}else{
+					//value is increasing
+					if(node.data.value < 30 && parseInt(value) >= 30){
+						//add Thirty data
+						if(node.data.thirtyText != "") summaryAddRow(node.data.displayName,"30",node.data.thirtyText);
+						
+						//add child node "All" and "Zero" data
+						$.each(node.children, function(key, val) {			
+							if(val.data.allText != "") summaryAddRow(val.data.displayName,"All",val.data.allText);
+							if(val.data.zeroText != "") summaryAddRow(val.data.displayName,"0",val.data.zeroText);
+						});
+					}
+					
+					if(node.data.value < 60 && parseInt(value) >= 60){
+						//add 60 Data
+						if(node.data.sixtyText != "") summaryAddRow(node.data.displayName,"60",node.data.sixtyText);
+					}
+					
+					if(node.data.value < 90 && parseInt(value) >= 90){
+						//add 90 Data
+						if(node.data.ninetyText != "") summaryAddRow(node.data.displayName,"90",node.data.ninetyText);
+						
+					}
+					
+					if(node.data.value < 100 && parseInt(value) >= 100){
+						//add 100 Data
+						if(node.data.hundredText != "") summaryAddRow(node.data.displayName,"100",node.data.hundredText);
+					}
+				}
+			}
+			sortTable(f_rid);
+		}
+		
+		function sortTable(f){
+			var rows = $('#summaryTable tbody  tr').get();
+
+			rows.sort(function(a, b) {
+				var A = getVal(a);
+				var B = getVal(b);
+				
+				
+				if(A < B) {
+					return -1*f;
+				}
+				if(A > B) {
+					return 1*f;
+				}
+				return 0;
+			});
+
+			function getVal(elm){
+				var v = elm.id;
+				return v;
+			}
+
+			$.each(rows, function(index, row) {
+				$('#summaryTable').children('tbody').append(row);
+			});
+		}
+		
+		function saveString(){
+			var jsonData = {};
+			$("input").each(function() {
+							   if($(this).val() > 0){
+								  jsonData[this.id] = $(this).val();
+							   }
+							});
+			var saveStr = JSON.stringify(jsonData);
+			saveStr = btoa(saveStr);
+			$('#saveString').val(saveStr);
+		}
+		
+		//eyJhcnRpc2FuIjoiNjIiLCJkaWdnaW5nIjoiNDQiLCJtaW5pbmciOiIyMCIsInN0YXRDYXAiOiIxMDAwIiwic3RyZW5ndGgiOiIxMCIsImFnaWxpdHkiOiIxMCIsImNvbnN0aXR1dGlvbiI6IjEwIiwiaW50ZWxsaWdlbmNlIjoiMTAiLCJ3aWxscG93ZXIiOiIxMCJ9
+		function loadString(){
+			var loadStr = $('#saveString').val();
+			loadStr = atob(loadStr);
+			var jsonData = JSON.parse(loadStr);
+			
+			$.each(jsonData, function(i, item) {
+				if(eval(i).displayName != null){
+					$('#' + i).val(item);
+					inputChange(i,item);
+				}else{
+					switch(i){
+						case "statCap":
+							$('#statCap').val(item);
+							modifyCaps();
+							break;
+						case "strength":
+							$('#strength').val(item);
+							modifyStr(item);
+							break;
+						case "agility":
+							$('#agility').val(item);
+							modifyAgi(item);
+							break;
+						case "intelligence":
+							$('#intelligence').val(item);
+							modifyInt(item);
+							break;
+						case "constitution":
+							$('#constitution').val(item);
+							modifyCon(item);
+							break;
+						case "willpower":
+							$('#willpower').val(item);
+							modifyWill(item);
+							break;
+					}
+				}
+			});
+		}
 	</script>
 	<style type="text/css">
         .ui-spinner-input{
@@ -369,9 +595,9 @@
      </style>
 </head>
 <body style='background:#635537'>
-<div style='margin:30px;width:40%;height:550px;float:left'>
+<div style='margin:10px;width:752px;height:550px;float:left'>
 	<div id='tree' class='tree' style='border:1px solid black;width:100%;height:450px;overflow-y:auto;overflow-x:auto;float:left'>
-		<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:10px;margin-bottom:20px;'>
+		<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 		</div>
 		<div style='clear:both'></div>
 		<br><br>
@@ -390,8 +616,8 @@
 		</center>
 	</div>
 </div>
-<div id='statblock' style='float:left;border:1px solid black;margin:30px;width:400px'>
-	<table>
+<div id='' style='float:left;margin:10px;width:350px'>
+	<table id='statblock' style='border:1px solid black;'>
 		<tr>
 			<td class='rowhead'>Stat Cap</td>
 			<td class='rowdata'><input type='number' id='statCap' name='statCap'  min="0" value='1000' onchange="modifyCaps();"></td>
@@ -468,16 +694,28 @@
 				<span id='CarryWeight'>120/240</span>
 			</td>
 		</tr>
-	</table>
+	</table><br>
+	<input type='text' id='saveString' size='30'>&nbsp;&nbsp;&nbsp;<a href="#" class="myButton" onclick='saveString();'>Save</a>&nbsp;&nbsp;<a href="#" class="myButton" onclick="loadString();">Load</a>
 </div>
 <div style='clear:both'></div>	
+<div>
+	<center>
+	<h2 style='color:white;	font-family:arial;'>Summary Table</h2>
+	<table id='summaryTable'>
+		<tr>
+			<th style='border-bottom: 3px solid white'>Skill</th>
+			<th style='border-bottom: 3px solid white'>Level<br>Requirement</th>
+			<th style='border-bottom: 3px solid white'>Abilities Unlocked</th>
+		</tr>
+	</table>
+	</center>
+</div>
 <script id='li-template' type='text/x-handlebars-template'>
 	<a href='#'>
 		<img id='{{idName}}Image' src='{{disabledImageSrc}}' /><br>
 		<input style='text-align:center' class='spinner {{skillType}}' id="{{idName}}" name="{{idName}}" value='{{value}}' >
 	</a>	
 </script>
-
 <script id='tooltip-template' type='text/x-handlebars-template'>
 	<table class='toolTip' border='1' style='border-collapse:collapse;border:1px solid black'>
 		<tr>
@@ -524,7 +762,7 @@
 	</table>
 </script>
 <script id='craftingView-template' type='text/x-handlebars-template'>
-	<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:10px;margin-bottom:20px;'>
+	<div id='artisanTree' class='tree' style='margin-left:auto;margin-right:auto;margin-top:20px;margin-bottom:20px;'>
 	</div>
 	<div style='clear:both'></div>
 	<br><br>
