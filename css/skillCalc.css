@@ -77,30 +77,18 @@ td.rowdata > input{
 
 .multiTree {
    
-    text-align: justify;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute-all-lines;
-    
-    /* just for demo */
-	height:88px;
-    min-width: 612px;
+    width:100%;
+	text-align:center;
 }
 
-.leaf {
-    height: 88px;
-	width:93px;
-    vertical-align: top;
-    display: inline-block;
-    *display: inline;
-    zoom: 1
+.multiTree > div{
+	width: calc(100% / 8);  
+	display: inline-block;
+	vertical-align: top;   
+	text-align:center;
+	margin:2%;    
+	padding:20px;
 }
-.stretch {
-    width: 100%;
-    display: inline-block;
-    font-size: 0;
-    line-height: 0
-}
-
 
 .tree{
   margin-left:auto;
