@@ -2,6 +2,25 @@ table.toolTip{
 	font-size: .7em;
 }
 
+#summaryTable{
+	color:white;
+	font-family:arial;
+	font-size: .8em;
+	border: 1px solid white;
+	border-collapse:collapse;
+}
+
+#summaryTable td{
+	border-bottom: 1px solid white;
+}
+
+
+#statblock{
+	color:white;
+	font-family:arial;
+	font-size: .9em;
+}
+
 td.skillChart{
 	vertical-align: top;
 	text-align:center;
@@ -63,6 +82,7 @@ td.rowdata > input{
 .tree{
   margin-left:auto;
   margin-right:auto;
+  width:752px;
 }
 
 
