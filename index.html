@@ -57,6 +57,12 @@
 					return theCompiledHtml;
 				}
 			});
+			
+			$('[data-popup-close]').on('click', function(e)  {
+				$('.popup').fadeOut(350);
+		 
+				e.preventDefault();
+			});
 		} );
 	</script>
 	<style type="text/css">
@@ -187,6 +193,12 @@
 		</tr>
 	</table>
 	</center>
+</div>
+<div class="popup" data-popup="popup-1">
+    <div class="popup-inner" style='text-align:center;font-family:arial;background:#D2B48C'>
+        <center><span style='font-weight:bold' id='errorTxt'></span></center><br><br>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+    </div>
 </div>
 <script id='li-template' type='text/x-handlebars-template'>
 	<a href='#'>
