@@ -181,7 +181,7 @@ function checkParent(skillName, value){//Logic for changing and validing the val
 		if(parentSkillValue < 30){
 			$('#'+skillName)[0].value = 0;
 			value=0;
-			handlePopup('You cannot invest more points in this until you have 30 points in ' + currentNode.parent.data.displayName);
+			handlePopup('You cannot invest points in this until you have 30 points in ' + currentNode.parent.data.displayName);
 		}else{
 			if(parentSkillValue >= 30 && parentSkillValue < 60){
 				if(value > 29){
