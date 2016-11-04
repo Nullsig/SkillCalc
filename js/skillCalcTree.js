@@ -171,16 +171,16 @@ function initializeNode(node){
 									  });				
 }
 
-function repaintTreeText_callback(){
-	var sourceData = eval(currentTree.data.idName);
+function repaintTreeText_callback(node){
+	var sourceData = eval(node.data.idName);
 
-	currentTree.data.displayName = sourceData.displayName;
-	currentTree.data.allText = sourceData.allText;
-	currentTree.data.zeroText = sourceData.zeroText;
-	currentTree.data.thirtyText = sourceData.thirtyText;
-	currentTree.data.sixtyText = sourceData.sixtyText;
-	currentTree.data.ninetyText = sourceData.ninetyText;
-	currentTree.data.hundredText = sourceData.hundredText;
+	node.data.displayName = sourceData.displayName;
+	node.data.allText = sourceData.allText;
+	node.data.zeroText = sourceData.zeroText;
+	node.data.thirtyText = sourceData.thirtyText;
+	node.data.sixtyText = sourceData.sixtyText;
+	node.data.ninetyText = sourceData.ninetyText;
+	node.data.hundredText = sourceData.hundredText;
 }
 
 /*Crafting Trees*/
