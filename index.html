@@ -22,10 +22,8 @@
 			var lang = qs("lang");
 			if(lang != null){
 				$.getScript( "lang/" + lang +".js");
-				writeTrees();
 			}else{
 				$.getScript( "lang/en.js");
-				writeTrees();
 			}
 			
 		 });
