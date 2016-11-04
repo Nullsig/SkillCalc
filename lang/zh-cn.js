@@ -1,3 +1,9 @@
+/*
+All ZN-CH translations provided by: BoundlessHaung	
+Steam Profile: http://steamcommunity.com/id/hxytuya
+Twitter: https://twitter.com/Boundle60348677
+*/
+
 var artisan = {
 				idName: "artisan", 
 				displayName: "工匠", 

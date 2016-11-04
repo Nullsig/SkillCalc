@@ -621,3 +621,27 @@ function qs(key) {
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
 }
 
+
+function changeLang(lang){
+	$.getScript( "lang/" + lang +".js");
+	
+	artisanTree.traverseBF(repaintTreeText_callback());
+	naturesLoreTree.traverseBF(repaintTreeText_callback());
+	huntingTree.traverseBF(repaintTreeText_callback());
+	chivalryTree.traverseBF(repaintTreeText_callback());
+	warriorTree.traverseBF(repaintTreeText_callback());
+	chainmailArmorsTree.traverseBF(repaintTreeText_callback());
+	scaleArmorsTree.traverseBF(repaintTreeText_callback());
+	plateArmorsTree.traverseBF(repaintTreeText_callback());
+	equipmentMaintainTree.traverseBF(repaintTreeText_callback());
+	battleSurvivalTree.traverseBF(repaintTreeText_callback());
+	drillTree.traverseBF(repaintTreeText_callback());
+	movementTree.traverseBF(repaintTreeText_callback());
+	swimmingTree.traverseBF(repaintTreeText_callback());
+	generalActionsTree.traverseBF(repaintTreeText_callback());
+	horsebackRidingTree.traverseBF(repaintTreeText_callback());
+	authorityTree.traverseBF(repaintTreeText_callback());
+	pietyTree.traverseBF(repaintTreeText_callback());
+	mentoringTree.traverseBF(repaintTreeText_callback());
+	artsTree.traverseBF(repaintTreeText_callback());
+}
