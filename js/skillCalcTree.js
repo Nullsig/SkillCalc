@@ -173,79 +173,82 @@ function initializeNode(node){
 
 
 
-
-/*Crafting Trees*/
-var artisanTree = new Tree(artisan);
-artisanTree.add(carpentry,artisan,artisanTree.traverseBF);
-artisanTree.add(bowcraft,carpentry,artisanTree.traverseBF);
-artisanTree.add(warfareEng,bowcraft,artisanTree.traverseBF);
-artisanTree.add(construction,artisan,artisanTree.traverseBF);
-artisanTree.add(masonry,construction,artisanTree.traverseBF);
-artisanTree.add(architecture,masonry,artisanTree.traverseBF);
-artisanTree.add(buildingMaintain,masonry,artisanTree.traverseBF);
-artisanTree.add(digging,artisan,artisanTree.traverseBF);
-artisanTree.add(mining,digging,artisanTree.traverseBF);
-artisanTree.add(preciousProsp,mining,artisanTree.traverseBF);
-artisanTree.add(jewelry,mining,artisanTree.traverseBF);
-artisanTree.add(materialsPrep,artisan,artisanTree.traverseBF);
-artisanTree.add(smelting,materialsPrep,artisanTree.traverseBF);
-artisanTree.add(forging,smelting,artisanTree.traverseBF);
-artisanTree.add(armorsmithing,smelting,artisanTree.traverseBF);
-
-
-var naturesLoreTree = new Tree(naturesLore);
-naturesLoreTree.add(herbalism,naturesLore,naturesLoreTree.traverseBF);
-naturesLoreTree.add(healing,herbalism,naturesLoreTree.traverseBF);
-naturesLoreTree.add(alchemy,healing,naturesLoreTree.traverseBF);
-naturesLoreTree.add(farming,naturesLore,naturesLoreTree.traverseBF);
-naturesLoreTree.add(forestry,farming,naturesLoreTree.traverseBF);
-naturesLoreTree.add(advancedFarming,farming,naturesLoreTree.traverseBF);
-naturesLoreTree.add(brewing,advancedFarming,naturesLoreTree.traverseBF);
-naturesLoreTree.add(cooking,advancedFarming,naturesLoreTree.traverseBF);
-
-var huntingTree = new Tree(hunting);
-huntingTree.add(animalLore,hunting,huntingTree.traverseBF);
-huntingTree.add(procuration,animalLore,huntingTree.traverseBF);
-huntingTree.add(warHorseHandling,procuration,huntingTree.traverseBF);
-huntingTree.add(tailoring,procuration,huntingTree.traverseBF);
+function writeTrees(){
+	/*Crafting Trees*/
+	var artisanTree = new Tree(artisan);
+	artisanTree.add(carpentry,artisan,artisanTree.traverseBF);
+	artisanTree.add(bowcraft,carpentry,artisanTree.traverseBF);
+	artisanTree.add(warfareEng,bowcraft,artisanTree.traverseBF);
+	artisanTree.add(construction,artisan,artisanTree.traverseBF);
+	artisanTree.add(masonry,construction,artisanTree.traverseBF);
+	artisanTree.add(architecture,masonry,artisanTree.traverseBF);
+	artisanTree.add(buildingMaintain,masonry,artisanTree.traverseBF);
+	artisanTree.add(digging,artisan,artisanTree.traverseBF);
+	artisanTree.add(mining,digging,artisanTree.traverseBF);
+	artisanTree.add(preciousProsp,mining,artisanTree.traverseBF);
+	artisanTree.add(jewelry,mining,artisanTree.traverseBF);
+	artisanTree.add(materialsPrep,artisan,artisanTree.traverseBF);
+	artisanTree.add(smelting,materialsPrep,artisanTree.traverseBF);
+	artisanTree.add(forging,smelting,artisanTree.traverseBF);
+	artisanTree.add(armorsmithing,smelting,artisanTree.traverseBF);
 
 
-/*Combat Trees*/
-var chivalryTree = new Tree(chivalry);
-chivalryTree.add(spearMastery,chivalry,chivalryTree.traverseBF);
-chivalryTree.add(mountedFightingMastery,chivalry,chivalryTree.traverseBF);
-chivalryTree.add(bladesMastery,chivalry,chivalryTree.traverseBF);
-chivalryTree.add(poleaxesMastery,spearMastery,chivalryTree.traverseBF);
-chivalryTree.add(unitAndFormation,poleaxesMastery,chivalryTree.traverseBF);
-chivalryTree.add(lancing,mountedFightingMastery,chivalryTree.traverseBF);
-chivalryTree.add(heavyHorseHandling,mountedFightingMastery,chivalryTree.traverseBF);
-chivalryTree.add(shieldMastery,bladesMastery,chivalryTree.traverseBF);
-chivalryTree.add(piercingMastery,bladesMastery,chivalryTree.traverseBF);
+	var naturesLoreTree = new Tree(naturesLore);
+	naturesLoreTree.add(herbalism,naturesLore,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(healing,herbalism,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(alchemy,healing,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(farming,naturesLore,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(forestry,farming,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(advancedFarming,farming,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(brewing,advancedFarming,naturesLoreTree.traverseBF);
+	naturesLoreTree.add(cooking,advancedFarming,naturesLoreTree.traverseBF);
 
-var warriorTree = new Tree(warrior);
-warriorTree.add(demolition,warrior,warriorTree.traverseBF);
-warriorTree.add(twoHandedAxes,warrior,warriorTree.traverseBF);
-warriorTree.add(crossbows,warrior,warriorTree.traverseBF);
-warriorTree.add(bows,crossbows,warriorTree.traverseBF);
-warriorTree.add(twoHandedBlades,twoHandedAxes,warriorTree.traverseBF);
-warriorTree.add(twoHandedBlunt,twoHandedAxes,warriorTree.traverseBF);
-warriorTree.add(combatPrep,crossbows,warriorTree.traverseBF);
-warriorTree.add(warCries,twoHandedBlunt,warriorTree.traverseBF);
-
-var chainmailArmorsTree = new Tree(chainmailArmors);
-var scaleArmorsTree = new Tree(scaleArmors);
-var plateArmorsTree = new Tree(plateArmors);
-var equipmentMaintainTree = new Tree(equipmentMaintain);
-var battleSurvivalTree = new Tree(battleSurvival);
-var drillTree = new Tree(drill);
+	var huntingTree = new Tree(hunting);
+	huntingTree.add(animalLore,hunting,huntingTree.traverseBF);
+	huntingTree.add(procuration,animalLore,huntingTree.traverseBF);
+	huntingTree.add(warHorseHandling,procuration,huntingTree.traverseBF);
+	huntingTree.add(tailoring,procuration,huntingTree.traverseBF);
 
 
-/*Minor Trees*/
-var movementTree = new Tree(movement);
-var generalActionsTree = new Tree(generalActions);
-var swimmingTree = new Tree(swimming);
-var authorityTree = new Tree(authority);
-var horsebackRidingTree = new Tree(horsebackRiding);
-var pietyTree = new Tree(piety);
-var mentoringTree = new Tree(mentoring);
-var artsTree = new Tree(arts);
+	/*Combat Trees*/
+	var chivalryTree = new Tree(chivalry);
+	chivalryTree.add(spearMastery,chivalry,chivalryTree.traverseBF);
+	chivalryTree.add(mountedFightingMastery,chivalry,chivalryTree.traverseBF);
+	chivalryTree.add(bladesMastery,chivalry,chivalryTree.traverseBF);
+	chivalryTree.add(poleaxesMastery,spearMastery,chivalryTree.traverseBF);
+	chivalryTree.add(unitAndFormation,poleaxesMastery,chivalryTree.traverseBF);
+	chivalryTree.add(lancing,mountedFightingMastery,chivalryTree.traverseBF);
+	chivalryTree.add(heavyHorseHandling,mountedFightingMastery,chivalryTree.traverseBF);
+	chivalryTree.add(shieldMastery,bladesMastery,chivalryTree.traverseBF);
+	chivalryTree.add(piercingMastery,bladesMastery,chivalryTree.traverseBF);
+
+	var warriorTree = new Tree(warrior);
+	warriorTree.add(demolition,warrior,warriorTree.traverseBF);
+	warriorTree.add(twoHandedAxes,warrior,warriorTree.traverseBF);
+	warriorTree.add(crossbows,warrior,warriorTree.traverseBF);
+	warriorTree.add(bows,crossbows,warriorTree.traverseBF);
+	warriorTree.add(twoHandedBlades,twoHandedAxes,warriorTree.traverseBF);
+	warriorTree.add(twoHandedBlunt,twoHandedAxes,warriorTree.traverseBF);
+	warriorTree.add(combatPrep,crossbows,warriorTree.traverseBF);
+	warriorTree.add(warCries,twoHandedBlunt,warriorTree.traverseBF);
+
+	var chainmailArmorsTree = new Tree(chainmailArmors);
+	var scaleArmorsTree = new Tree(scaleArmors);
+	var plateArmorsTree = new Tree(plateArmors);
+	var equipmentMaintainTree = new Tree(equipmentMaintain);
+	var battleSurvivalTree = new Tree(battleSurvival);
+	var drillTree = new Tree(drill);
+
+
+	/*Minor Trees*/
+	var movementTree = new Tree(movement);
+	var generalActionsTree = new Tree(generalActions);
+	var swimmingTree = new Tree(swimming);
+	var authorityTree = new Tree(authority);
+	var horsebackRidingTree = new Tree(horsebackRiding);
+	var pietyTree = new Tree(piety);
+	var mentoringTree = new Tree(mentoring);
+	var artsTree = new Tree(arts);
+}
+
+writeTrees();
