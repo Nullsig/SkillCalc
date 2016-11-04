@@ -43,18 +43,7 @@
 				e.preventDefault();
 			});
 		} );
-		
-		
-		$( function() {
-			var lang = qs("lang");
-			if(lang != null){
-				changeLang(lang);
-			}else{
-				changeLang("en");
-			}
-			
-		 });
-		
+				
 	</script>
 	<style type="text/css">
         .ui-spinner-input{
@@ -294,6 +283,17 @@
 		<div id='artsTree' class='tree leaf'></div>
 		<span class="stretch"></span>
 	</div>
+</script>
+<script>		
+$( function() {
+	var lang = qs("lang");
+	if(lang != null){
+		changeLang(lang);
+	}else{
+		changeLang("en");
+	}
+	
+ });
 </script>
 </body>
 </html>
