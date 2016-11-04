@@ -19,6 +19,16 @@
 		var f_rid = 1;
 		
 		$( function() {
+			var lang = qs("lang");
+			if(lang != null){
+				$.getScript( "lang/" + lang +".js");
+			}else{
+				$.getScript( "lang/en.js");
+			}
+			
+		 });
+		
+		$( function() {
 			loadCrafting();
 			
 			//initialize summary table rows
@@ -43,15 +53,6 @@
 			manageSummaryTable(artsTree._root);
 		} );
 		
-		$( function() {
-			var lang = qs("lang");
-			if(lang != null){
-				$.getScript( "lang/" + lang +".js");
-			}else{
-				$.getScript( "lang/en.js");
-			}
-			
-		 });
 		
 		
 		$( function() {
