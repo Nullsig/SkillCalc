@@ -19,20 +19,8 @@
 		var f_rid = 1;
 		
 		$( function() {
-			var lang = qs("lang");
-			if(lang != null){
-				changeLang(lang);
-			}else{
-				changeLang("en");
-			}
-			
-		 });
-		
-		$( function() {
 			loadCrafting();
-		} );
-		
-		
+		} );		
 		
 		$( function() {
 			$( document ).tooltip({
@@ -55,6 +43,18 @@
 				e.preventDefault();
 			});
 		} );
+		
+		
+		$( function() {
+			var lang = qs("lang");
+			if(lang != null){
+				changeLang(lang);
+			}else{
+				changeLang("en");
+			}
+			
+		 });
+		
 	</script>
 	<style type="text/css">
         .ui-spinner-input{
