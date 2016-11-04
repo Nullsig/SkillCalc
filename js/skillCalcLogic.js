@@ -574,7 +574,6 @@ function saveString(){
 	$('#saveString').val(saveStr);
 }
 
-//eyJhcnRpc2FuIjoiNjIiLCJkaWdnaW5nIjoiNDQiLCJtaW5pbmciOiIyMCIsInN0YXRDYXAiOiIxMDAwIiwic3RyZW5ndGgiOiIxMCIsImFnaWxpdHkiOiIxMCIsImNvbnN0aXR1dGlvbiI6IjEwIiwiaW50ZWxsaWdlbmNlIjoiMTAiLCJ3aWxscG93ZXIiOiIxMCJ9
 function loadString(){
 	var loadStr = $('#saveString').val();
 	loadStr = atob(loadStr);
@@ -614,3 +613,11 @@ function loadString(){
 		}
 	});
 }
+
+//for pulling the language
+function qs(key) {
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}
+

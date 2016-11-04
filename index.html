@@ -44,6 +44,17 @@
 		} );
 		
 		$( function() {
+			var lang = qs("lang");
+			if(lang != null){
+				$.getScript( "lang/" + lang +".js");
+			}else{
+				$.getScript( "lang/en.js");
+			}
+			
+		 });
+		
+		
+		$( function() {
 			$( document ).tooltip({
 				items: "li",
 				track: true,
