@@ -21,9 +21,9 @@
 		$( function() {
 			var lang = qs("lang");
 			if(lang != null){
-				$.getScript( "lang/" + lang +".js");
+				changeLang(lang);
 			}else{
-				$.getScript( "lang/en.js");
+				changeLang("en");
 			}
 			
 		 });
