@@ -645,6 +645,12 @@ function changeLang(lang){
 			mentoringTree.traverseBF(repaintTreeText_callback);
 			artsTree.traverseBF(repaintTreeText_callback);
 			
+			$.each(HardTextVals, function(key,value){
+				 $('#'+key).html(value);
+			});
+			
+			
+			
 			$("#summaryTable").find("tr:gt(0)").remove();
 			
 			manageSummaryTable(artisanTree._root);

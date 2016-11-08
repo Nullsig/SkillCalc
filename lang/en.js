@@ -13,6 +13,17 @@ var HardTextVals = {
 					ConstitutionText: "Constitution",
 					IntelligenceText: "Intelligence",
 					WillpowerText: "Willpower",
+					HitPointsText: "Hit Points",
+					StaminaText: "Stamina",
+					CarryWeightText: "Carry Weight",
+					MaxOverText: "base max / over burdened",
+					SaveText: "Save",
+					LoadText: "Load",
+					SummaryTableText: "Summary Table",
+					SkillHeaderText: "Skill",
+					LvlReqText: "Level<br>Requirement",
+					UnlockedText: "Abilities Unlocked",
+					AllText: "All"
 				};
 
 
