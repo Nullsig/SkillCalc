@@ -26,7 +26,7 @@ var HardTextVals = {
 					MaxOverText: "base max / over burdened",
 					SaveText: "Save",
 					LoadText: "Load",
-					SummaryTableText: "Summary Table",
+					SummaryTableText: "Summary",
 					SkillHeaderText: "Skill",
 					LvlReqText: "Level<br>Requirement",
 					UnlockedText: "Abilities Unlocked",
