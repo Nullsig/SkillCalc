@@ -84,6 +84,26 @@ table.toolTip{
 	text-shadow:0px -1px 0px #7a2a1d;
 }
 
+.btn {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 3px #666666;
+  -moz-box-shadow: 2px 2px 3px #666666;
+  box-shadow: 2px 2px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #B54B3A;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #9C2B28;
+  text-decoration: none;
+}
+
 #summaryTable{
 	color:white;
 	font-family:arial;
