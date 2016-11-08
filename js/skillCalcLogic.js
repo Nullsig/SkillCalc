@@ -467,7 +467,7 @@ function summaryRemoveRow(skillName, skillLevel, skillText){
 function manageSummaryTable(node, value){
 	if(node.parent == null && value == null){
 		//initializing a root of a tree
-		if(node.data.allText != "") summaryAddRow(node.data.displayName,"All",node.data.allText);
+		if(node.data.allText != "") summaryAddRow(node.data.displayName,HardTextVals.AllText,node.data.allText);
 		if(node.data.zeroText != "") summaryAddRow(node.data.displayName,"0",node.data.zeroText);
 	}else{
 
@@ -481,7 +481,7 @@ function manageSummaryTable(node, value){
 				
 				//remove child node "All" and "Zero" data
 				$.each(node.children, function(key, val) {			
-					if(val.data.allText != "") summaryRemoveRow(val.data.displayName,"All",val.data.allText);
+					if(val.data.allText != "") summaryRemoveRow(val.data.displayName,HardTextVals.AllText,val.data.allText);
 					if(val.data.zeroText != "") summaryRemoveRow(val.data.displayName,"0",val.data.zeroText);
 				});
 			}
@@ -510,7 +510,7 @@ function manageSummaryTable(node, value){
 				
 				//add child node "All" and "Zero" data
 				$.each(node.children, function(key, val) {			
-					if(val.data.allText != "") summaryAddRow(val.data.displayName,"All",val.data.allText);
+					if(val.data.allText != "") summaryAddRow(val.data.displayName,HardTextVals.AllText,val.data.allText);
 					if(val.data.zeroText != "") summaryAddRow(val.data.displayName,"0",val.data.zeroText);
 				});
 			}

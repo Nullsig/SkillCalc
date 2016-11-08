@@ -4,6 +4,49 @@ Steam Profile: http://steamcommunity.com/id/hxytuya
 Twitter: https://twitter.com/Boundle60348677
 */
 
+
+//Hard Text Values <id of span>: <translated text>
+var HardTextVals = {
+					CraftingText: "Crafting",
+					CombatText: "Combat",
+					MinorText: "Minor",
+					StatCapText: "Stat Cap",
+					CoPSpentText: "Combat Points Spent",
+					CrPSpentText: "Crafting Points Spent",
+					MiPSpentText: "Minor Points Spent",
+					AtPSpentText: "Attribute Points Spent",
+					StrengthText: "Strength",
+					AgilityText: "Agility",
+					ConstitutionText: "Constitution",
+					IntelligenceText: "Intelligence",
+					WillpowerText: "Willpower",
+					HitPointsText: "Hit Points",
+					StaminaText: "Stamina",
+					CarryWeightText: "Carry Weight",
+					MaxOverText: "base max / over burdened",
+					SaveText: "Save",
+					LoadText: "Load",
+					SummaryTableText: "Summary Table",
+					SkillHeaderText: "Skill",
+					LvlReqText: "Level<br>Requirement",
+					UnlockedText: "Abilities Unlocked",
+					AllText: "All"
+				};
+
+
+/*
+Build out Nodes 
+Translations require new values for:
+displayName
+allText
+zeroText
+thirtyText
+sixtyText
+ninetyText
+hundredText
+
+All other values should not change
+*/
 var artisan = {
 				idName: "artisan", 
 				displayName: "工匠", 

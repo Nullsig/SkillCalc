@@ -76,102 +76,102 @@
 	<br>
 	<div style='width:100%;height:100px;float:left'>
 		<center>
-			<a href="#" class="btn" onclick='loadCrafting();'>Crafting</a>
-			<a href="#" class="btn" onclick='loadCombat();'>Combat</a>
-			<a href="#" class="btn" onclick='loadMinor();'>Minor</a>
+			<a href="#" class="btn" onclick='loadCrafting();'><span id='CraftingText'>Crafting</span></a>
+			<a href="#" class="btn" onclick='loadCombat();'><span id='CombatText'>Combat</span></a>
+			<a href="#" class="btn" onclick='loadMinor();'><span id='MinorText'>Minor</span></a>
 		</center>
 	</div>
 </div>
 <div id='' style='float:right;margin:10px;width:350px'>
 	<table id='statblock' style='border:1px solid black;'>
 		<tr>
-			<td class='rowhead'>Stat Cap</td>
+			<td class='rowhead'><span id='StatCapText'>Stat Cap</span></td>
 			<td class='rowdata'><input type='number' id='statCap' name='statCap'  min="0" value='1000' onchange="modifyCaps();"></td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Crafting Points Spent</td>
+			<td class='rowhead'><span id='CrPSpentText'>Crafting Points Spent</span></td>
 			<td class='rowdata'>
 				<span id='CraftingPoints'>0</span> / <span id='CraftingCap'>1000</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Combat Points Spent</td>
+			<td class='rowhead'><span id='CoPSpentText'>Combat Points Spent</span></td>
 			<td class='rowdata'>
 				<span id='CombatPoints'>0</span> / <span id='CombatCap'>1000</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Minor Points Spent</td>
+			<td class='rowhead'><span id='MiPSpentText'>Minor Points Spent</span></td>
 			<td class='rowdata'>
 				<span id='MinorPoints'>0</span> / <span id='MinorCap'>1000</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Attribute Points Spent</td>
+			<td class='rowhead'><span id='AtPSpentText'>Attribute Points Spent</span></td>
 			<td class='rowdata'>
 				<span id='AttrPoints'>50</span> / <span id='AttrCap'>150</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Strength</td>
+			<td class='rowhead'><span id='StrengthText'>Strength</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="strength" name="strength" value='10' min="10" max="110" onchange='modifyStr(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Agility</td>
+			<td class='rowhead'><span id='AgilityText'>Agility</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="agility" name="agility" value='10' min="10" max="110" onchange='modifyAgi(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Constitution</td>
+			<td class='rowhead'><span id='ConstitutionText'>Constitution</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="constitution" name="constitution" value='10' min="10" max="110" onchange='modifyCon(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Intelligence</td>
+			<td class='rowhead'><span id='IntelligenceText'>Intelligence</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="intelligence" name="intelligence" value='10' min="10" max="110" onchange='modifyInt(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Willpower</td>
+			<td class='rowhead'><span id='WillpowerText'>Willpower</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="willpower" name="willpower" value='10' min="10" max="110" onchange='modifyWill(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Hit Points</td>
+			<td class='rowhead'><span id='HitPointsText'>Hit Points</span></td>
 			<td class='rowdata'>
 				<span id='HP'>100</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Stamina</td>
+			<td class='rowhead'><span id='StaminaText'>Stamina</span></td>
 			<td class='rowdata'>
 				<span id='Stam'>100</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'>Carry Weight <small>(base max / over burdened)</small></td>
+			<td class='rowhead'><span id='CarryWeightText'>Carry Weight</span> <small>(<span id='MaxOverText'>base max / over burdened</span>)</small></td>
 			<td class='rowdata'>
 				<span id='CarryWeight'>120/240</span>
 			</td>
 		</tr>
 	</table><br>
-	<input type='text' id='saveString' width='100%'><br><a href="#" class="myButton" onclick='saveString();'>Save</a>&nbsp;&nbsp;<a href="#" class="myButton" onclick="loadString();">Load</a>
+	<input type='text' id='saveString' size='60'><br><a href="#" class="myButton" onclick='saveString();'><span id='SaveText'>Save</span></a>&nbsp;&nbsp;<a href="#" class="myButton" onclick="loadString();"><span id='LoadText'>Load</span></a>
 </div>
 <div style='clear:both'></div>	
 <div>
 	<center>
-	<h2 style='color:white;	font-family:arial;'>Summary Table</h2>
+	<h2 style='color:white;	font-family:arial;'><span id='SummaryTableText'>Summary Table</span></h2>
 	<table id='summaryTable'>
 		<tr>
-			<th style='border-bottom: 3px solid white'>Skill</th>
-			<th style='border-bottom: 3px solid white'>Level<br>Requirement</th>
-			<th style='border-bottom: 3px solid white'>Abilities Unlocked</th>
+			<th style='border-bottom: 3px solid white'><span id='SkillHeaderText'>Skill</span></th>
+			<th style='border-bottom: 3px solid white'><span id='LvlReqText'>Level<br>Requirement</span></th>
+			<th style='border-bottom: 3px solid white'><span id='UnlockedText'>Abilities Unlocked</span></th>
 		</tr>
 	</table>
 	</center>
@@ -197,7 +197,7 @@
 		</tr>
 		{{#if allText}}
 		<tr>
-			<td class='skillChart'>All</td>
+			<td class='skillChart'><span id='AllText'>All</span></td>
 			<td class='skillText'>{{{allText}}}</td>
 		</tr>
 		{{/if}}

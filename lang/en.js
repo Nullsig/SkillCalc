@@ -1,4 +1,34 @@
-//Build out Nodes
+//Hard Text Values <id of span>: <translated text>
+var HardTextVals = {
+					CraftingText: "Crafting",
+					CombatText: "Combat",
+					MinorText: "Minor",
+					StatCapText: "Stat Cap",
+					CoPSpentText: "Combat Points Spent",
+					CrPSpentText: "Crafting Points Spent",
+					MiPSpentText: "Minor Points Spent",
+					AtPSpentText: "Attribute Points Spent",
+					StrengthText: "Strength",
+					AgilityText: "Agility",
+					ConstitutionText: "Constitution",
+					IntelligenceText: "Intelligence",
+					WillpowerText: "Willpower",
+				};
+
+
+/*
+Build out Nodes 
+Translations require new values for:
+displayName
+allText
+zeroText
+thirtyText
+sixtyText
+ninetyText
+hundredText
+
+All other values should not change
+*/
 var artisan = {
 				idName: "artisan", 
 				displayName: "Artisan", 
