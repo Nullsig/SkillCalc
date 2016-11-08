@@ -29,6 +29,7 @@
 				content: function() {
 					var element = $( this );
 					var skill = eval(element.context.firstElementChild.children[2].firstChild.id);
+					skill.AllTTText = HardTextVals.AllText;
 					
 					var theTemplateScript = $("#tooltip-template").html();
 					var theTemplate = Handlebars.compile(theTemplateScript);
@@ -197,7 +198,7 @@
 		</tr>
 		{{#if allText}}
 		<tr>
-			<td class='skillChart'><span id='AllText'>All</span></td>
+			<td class='skillChart'>{{{AllTTText}}}</td>
 			<td class='skillText'>{{{allText}}}</td>
 		</tr>
 		{{/if}}
