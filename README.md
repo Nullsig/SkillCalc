@@ -18,3 +18,5 @@ CSS for Tree rendering from http://thecodeplayer.com/walkthrough/css3-family-tre
 Images and Tool Tip Text from http://lifeisfeudal.gamepedia.com/
 
 All other code written and maintained by Peter Braun: sollembas@gmail.com 
+
+Chinese Translations courtesy of BoundlessHaung: https://twitter.com/Boundle60348677 
