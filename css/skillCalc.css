@@ -1,3 +1,8 @@
+.changeLogEntry li{
+	list-style-type: disc;
+	display:inline;
+}
+
 /*Start Popup*/
 /* Outer */
 .popup {
