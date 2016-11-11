@@ -405,9 +405,13 @@ function modifyWill(value){
 }
 
 function modifyCaps(){
-	var statCap = (parseInt($('#intelligence').val())-10) + parseInt($('#statCap').val());
-
-
+	var statCap = parseInt($('#statCap').val());
+	if($('#twoforone').is(':checked')){
+		statCap += (parseInt($('#intelligence').val())-10)*2;
+	}else{
+		statCap += (parseInt($('#intelligence').val())-10); 
+	}	
+	
 	$('#MinorCap').html(statCap.toString());
 	$('#CombatCap').html(statCap.toString());
 	$('#CraftingCap').html(statCap.toString());
