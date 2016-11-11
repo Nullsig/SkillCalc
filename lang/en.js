@@ -12,6 +12,7 @@ var HardTextVals = {
 					AgilityText: "Agility",
 					ConstitutionText: "Constitution",
 					IntelligenceText: "Intelligence",
+					TwoForOneText: "Stat Cap x2",
 					WillpowerText: "Willpower",
 					HitPointsText: "Hit Points",
 					StaminaText: "Stamina",
