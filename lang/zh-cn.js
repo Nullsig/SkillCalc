@@ -10,7 +10,7 @@ var HardTextVals = {
 					CraftingText: "Crafting",
 					CombatText: "Combat",
 					MinorText: "Minor",
-					StatCapText: "Stat Cap",
+					SkillCapText: "Skill Cap",
 					CoPSpentText: "Combat Points Spent",
 					CrPSpentText: "Crafting Points Spent",
 					MiPSpentText: "Minor Points Spent",

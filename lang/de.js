@@ -3,7 +3,7 @@ var HardTextVals = {
 					CraftingText: "Handwerksfertigkeiten",
 					CombatText: "Kampffertigkeiten",
 					MinorText: "Grundfertigkeiten",
-					StatCapText: "Attributsgrenze",
+					SkillCapText: "Fertigkeitengrenze",
 					CoPSpentText: "Kampfpunkte verwendet",
 					CrPSpentText: "Handwerkspunte verwendet",
 					MiPSpentText: "Grundfertigkeitspunkte verwendet",
@@ -28,18 +28,18 @@ var HardTextVals = {
 				};
 
 var popupMessages = {
-					SkillCap: "You have exceeded skill cap. This skill has been set to the maximum possible. You need to remove points from your build elsewhere to continue investing in this skill.",
-					SkillHighest: "Skill values cannot exceed 100.",
-					SkillLowest: "Skill values cannot be below 0.",
-					UnlockParent30: "You cannot invest points in this until you have 30 points in ",
-					UnlockParent60: "You cannot invest more points in this until you have 60 points in ",
-					StatCapStr: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Strength",
-					StatCapAgi: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Agility",
-					StatCapConst: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Constitution",
-					StatCapInt: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Intelligence",
-					StatCapWill: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Willpower",
-					StatMax: "110 is the maximum possible value for stats",
-					StatMin: "10 is the minimum possible value for stats",
+					SkillCap: "Du hast deine Fertigkeitengrenze erreicht. Du musst zuerst Punkte bei anderen Fertigkeiten entfernen, um wieder in diese Fertigkeit investieren zu können!",
+					SkillHighest: "Fähigkeit kann nicht höher wie 100 sein.",
+					SkillLowest: "Fähigkeit kann nicht niedriger wie 0 sein.",
+					UnlockParent30: "Du kannst keine Punkte investieren. Du benötigst erst 30 Punkte in ",
+					UnlockParent60: "Du kannst keine Punkte investieren. Du benötigst erst 60 Punkte in ",
+					StatCapStr: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Stärke investieren zu können",
+					StatCapAgi: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Beweglichkeit investieren zu können",
+					StatCapConst: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Vitalität investieren zu können",
+					StatCapInt: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Intellekt investieren zu können",
+					StatCapWill: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Willenskraft investieren zu können",
+					StatMax: "110 ist die maximale Punktzahl für ein Attribut",
+					StatMin: "10 ist die minimale Punktzahl für ein Attribut",
 };
 /*
 Build out Nodes 
