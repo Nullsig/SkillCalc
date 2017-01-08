@@ -27,7 +27,20 @@ var HardTextVals = {
 					AllText: "All"
 				};
 
-
+var popupMessages = {
+					SkillCap: "You have exceeded skill cap. This skill has been set to the maximum possible. You need to remove points from your build elsewhere to continue investing in this skill.",
+					SkillHighest: "Skill values cannot exceed 100.",
+					SkillLowest: "Skill values cannot be below 0.",
+					UnlockParent30: "You cannot invest points in this until you have 30 points in ",
+					UnlockParent60: "You cannot invest more points in this until you have 60 points in ",
+					StatCapStr: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Strength",
+					StatCapAgi: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Agility",
+					StatCapConst: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Constitution",
+					StatCapInt: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Intelligence",
+					StatCapWill: "You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Willpower",
+					StatMax: "110 is the maximum possible value for stats",
+					StatMin: "10 is the minimum possible value for stats",
+};
 /*
 Build out Nodes 
 Translations require new values for:
