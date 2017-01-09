@@ -139,7 +139,7 @@ function inputChange(skillName, value){
 		value = treeCap - curTotal;
 		curTotal = treeCap;
 		$('#'+skillName)[0].value = value;
-		handlePopup('You have exceeded skill cap. This skill has been set to the maximum possible. You need to remove points from your build elsewhere to continue investing in this skill.');
+		handlePopup(popupMessages.SkillCap);
 	}else{
 		curTotal = curTotal + parseInt(value);
 	}
@@ -157,12 +157,12 @@ function checkParent(skillName, value){//Logic for changing and validing the val
 			$('#'+skillName)[0].value = 100;
 			value=100;
 			
-			handlePopup('Skill values cannot exceed 100.');
+			handlePopup(popupMessages.SkillHighest);
 		}
 		if(value < 0){
 			$('#'+skillName)[0].value = 0;
 			value=0;
-			handlePopup('Skill values cannot be below 0.');
+			handlePopup(popupMessages.SkillLowest);
 		}
 		
 		//check if value exceeded 30 and enable child nodes if so
@@ -181,24 +181,24 @@ function checkParent(skillName, value){//Logic for changing and validing the val
 		if(parentSkillValue < 30){
 			$('#'+skillName)[0].value = 0;
 			value=0;
-			handlePopup('You cannot invest points in this until you have 30 points in ' + currentNode.parent.data.displayName);
+			handlePopup(popupMessages.UnlockParent30 + currentNode.parent.data.displayName);
 		}else{
 			if(parentSkillValue >= 30 && parentSkillValue < 60){
 				if(value > 29){
 					$('#'+skillName)[0].value = 29;
 					value=29;
-					handlePopup('You cannot invest more points in this until you have 60 points in ' + currentNode.parent.data.displayName);
+					handlePopup(popupMessages.UnlockParent60 + currentNode.parent.data.displayName);
 				}
 			}else{
 				if(value > 100){ 
 					$('#'+skillName)[0].value = 100;
 					value=100;
-					handlePopup('Skill values cannot exceed 100.');
+					handlePopup(popupMessages.SkillHighest);
 				}
 				if(value < 0){
 					$('#'+skillName)[0].value = 0;
 					value=0;
-					handlePopup('Skill values cannot be below 0.');
+					handlePopup(popupMessages.SkillLowest);
 				}
 				
 				if(value >= 30){
@@ -253,19 +253,19 @@ function modifyStr(value){
 		value = 150 - currentTotal;
 		currentTotal = 150;
 		
-		handlePopup('You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Strength');
+		handlePopup(popupMessages.StatCapStr);
 	}else{
 		if(parseInt(value) > 110){
 			value = 110;
 			$('#strength').val(110);
 				
-			handlePopup('110 is the maximum possible value for stats');
+			handlePopup(popupMessages.StatMax);
 		}else{
 			if(parseInt(value) < 10){
 				value = 10;
 				$('#strength').val(10);
 				
-				handlePopup('10 is the minimum possible value for stats');
+				handlePopup(popupMessages.StatMin);
 			}
 		}
 		currentTotal += parseInt(value);
@@ -283,19 +283,19 @@ function modifyAgi(value){
 		value = 150 - currentTotal;
 		currentTotal = 150;
 		
-		handlePopup('You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Agility');
+		handlePopup(popupMessages.StatCapAgi);
 	}else{
 		if(parseInt(value) > 110){
 			value = 110;
 			$('#agility').val(110);
 				
-			handlePopup('110 is the maximum possible value for stats');
+			handlePopup(popupMessages.StatMax);
 		}else{
 			if(parseInt(value) < 10){
 				value = 10;
 				$('#agility').val(10);
 				
-				handlePopup('10 is the minimum possible value for stats');
+				handlePopup(popupMessages.StatMin);
 			}
 		}
 		currentTotal += parseInt(value);
@@ -312,19 +312,19 @@ function modifyCon(value){
 		value = 150 - currentTotal;
 		currentTotal = 150;
 		
-		handlePopup('You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Constitution');
+		handlePopup(popupMessages.StatCapConst);
 	}else{
 		if(parseInt(value) > 110){
 			value = 110;
 			$('#constitution').val(110);
 				
-			handlePopup('110 is the maximum possible value for stats');
+			handlePopup(popupMessages.StatMax);
 		}else{
 			if(parseInt(value) < 10){
 				value = 10;
 				$('#constitution').val(10);
 				
-				handlePopup('10 is the minimum possible value for stats');
+				handlePopup(popupMessages.StatMin);
 			}
 		}
 		currentTotal += parseInt(value);
@@ -345,19 +345,19 @@ function modifyInt(value){
 		value = 150 - currentTotal;
 		currentTotal = 150;
 		
-		handlePopup('You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Intelligence');
+		handlePopup(popupMessages.StatCapInt);
 	}else{
 		if(parseInt(value) > 110){
 			value = 110;
 			$('#intelligence').val(110);
 				
-			handlePopup('110 is the maximum possible value for stats');
+			handlePopup(popupMessages.StatMax);
 		}else{
 			if(parseInt(value) < 10){
 				value = 10;
 				$('#intelligence').val(10);
 				
-				handlePopup('10 is the minimum possible value for stats');
+				handlePopup(popupMessages.StatMin);
 			}
 		}
 		currentTotal += parseInt(value);
@@ -375,19 +375,19 @@ function modifyWill(value){
 	if(currentTotal + parseInt(value) > 150){
 		value = 150 - currentTotal;
 		currentTotal = 150;
-		handlePopup('You have exceeded the 150 point stat cap. You will need to lower points in another attribute to continue raising Willpower');
+		handlePopup(popupMessages.StatCapWill);
 	}else{
 		if(parseInt(value) > 110){
 			value = 110;
 			$('#willpower').val(110);
 				
-			handlePopup('110 is the maximum possible value for stats');
+			handlePopup(popupMessages.StatMax);
 		}else{
 			if(parseInt(value) < 10){
 				value = 10;
 				$('#willpower').val(10);
 				
-				handlePopup('10 is the minimum possible value for stats');
+				handlePopup(popupMessages.StatMin);
 			}
 		}
 		currentTotal += parseInt(value);

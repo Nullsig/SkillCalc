@@ -3,7 +3,7 @@ var HardTextVals = {
 					CraftingText: "Handwerksfertigkeiten",
 					CombatText: "Kampffertigkeiten",
 					MinorText: "Grundfertigkeiten",
-					StatCapText: "Attributsgrenze",
+					SkillCapText: "Fertigkeitengrenze",
 					CoPSpentText: "Kampfpunkte verwendet",
 					CrPSpentText: "Handwerkspunte verwendet",
 					MiPSpentText: "Grundfertigkeitspunkte verwendet",
@@ -27,7 +27,20 @@ var HardTextVals = {
 					AllText: "Alle"
 				};
 
-
+var popupMessages = {
+					SkillCap: "Du hast deine Fertigkeitengrenze erreicht. Du musst zuerst Punkte bei anderen Fertigkeiten entfernen, um wieder in diese Fertigkeit investieren zu können!",
+					SkillHighest: "Fähigkeit kann nicht höher wie 100 sein.",
+					SkillLowest: "Fähigkeit kann nicht niedriger wie 0 sein.",
+					UnlockParent30: "Du kannst keine Punkte investieren. Du benötigst erst 30 Punkte in ",
+					UnlockParent60: "Du kannst keine Punkte investieren. Du benötigst erst 60 Punkte in ",
+					StatCapStr: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Stärke investieren zu können",
+					StatCapAgi: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Beweglichkeit investieren zu können",
+					StatCapConst: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Vitalität investieren zu können",
+					StatCapInt: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Intellekt investieren zu können",
+					StatCapWill: "Du hast die Attributsgrenze von 150 erreicht. Du musst Punkte in einem anderen Attribut verringern um wieder in Willenskraft investieren zu können",
+					StatMax: "110 ist die maximale Punktzahl für ein Attribut",
+					StatMin: "10 ist die minimale Punktzahl für ein Attribut",
+};
 /*
 Build out Nodes 
 Translations require new values for:
@@ -1005,3 +1018,4 @@ var arts = {
 				disabledImageSrc:"images/Arts_u.png",
 				value:0
 			};
+			
