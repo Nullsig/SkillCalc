@@ -25,24 +25,19 @@
 		
 		$( function() {
 			$( document ).tooltip({
-				items: "li",
+				items: "li, [InfoTooltip]",
 				track: true,
-				content: function() {
+				content: function() {				
 					var element = $( this );
-					var skill = eval(element.context.firstElementChild.children[2].firstChild.id);
-					skill.AllTTText = HardTextVals.AllText;
+					if ( element.is( "li" ) ) {
+						var skill = eval(element.context.firstElementChild.children[2].firstChild.id);
+						skill.AllTTText = HardTextVals.AllText;
 					
-					var theTemplateScript = $("#tooltip-template").html();
-					var theTemplate = Handlebars.compile(theTemplateScript);
-					var theCompiledHtml = theTemplate(skill);
-					return theCompiledHtml;
-				}
-			});
-			
-			$( document ).tooltip({
-				items: "[InfoTooltip]",
-				content: function() {
-					var element = $( this );
+						var theTemplateScript = $("#tooltip-template").html();
+						var theTemplate = Handlebars.compile(theTemplateScript);
+						var theCompiledHtml = theTemplate(skill);
+						return theCompiledHtml;
+					}
 					if ( element.is( "[InfoTooltip]" ) ) {
 						var tttext = eval("infotooltip."+element.attr("InfoTooltip"));
 						return tttext;
