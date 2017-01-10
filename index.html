@@ -39,6 +39,17 @@
 				}
 			});
 			
+			$( document ).tooltip({
+				items: "[InfoTooltip]",
+				content: function() {
+					var element = $( this );
+					if ( element.is( "[InfoTooltip]" ) ) {
+						var tttext = eval(element.attr("InfoTooltip"));
+						return tttext;
+					}
+				}
+			});
+			
 			$('[data-popup-close]').on('click', function(e)  {
 				$('.popup').fadeOut(350);
 		 
@@ -90,7 +101,7 @@
 <div id='' style='float:right;margin:10px;width:350px'>
 	<table id='statblock' style='border:1px solid black;'>
 		<tr>
-			<td class='rowhead'><span id='SkillCapText'>Skill Cap</span></td>
+			<td class='rowhead'><span id='SkillCapText' InfoTooltip='infotooltip.skillCap'>Skill Cap</span></td>
 			<td class='rowdata'><input type='number' id='statCap' name='statCap'  min="0" value='1000' onchange="modifyCaps();"></td>
 		</tr>
 		<tr>
@@ -118,49 +129,49 @@
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='StrengthText'>Strength</span></td>
+			<td class='rowhead'><span id='StrengthText' InfoTooltip='infotooltip.strength'>Strength</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="strength" name="strength" value='10' min="10" max="110" onchange='modifyStr(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='AgilityText'>Agility</span></td>
+			<td class='rowhead'><span id='AgilityText' InfoTooltip='infotooltip.agility'>Agility</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="agility" name="agility" value='10' min="10" max="110" onchange='modifyAgi(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='ConstitutionText'>Constitution</span></td>
+			<td class='rowhead'><span id='ConstitutionText' InfoTooltip='infotooltip.constitution'>Constitution</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="constitution" name="constitution" value='10' min="10" max="110" onchange='modifyCon(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='IntelligenceText'>Intelligence</span>&nbsp;&nbsp;<input type='checkbox' id='twoforone' onclick='modifyCaps();'><small><span id='TwoForOneText'>Stat Cap x2</span></small></td>
+			<td class='rowhead'><span id='IntelligenceText' InfoTooltip='infotooltip.intelligence'>Intelligence</span>&nbsp;&nbsp;<input type='checkbox' id='twoforone' onclick='modifyCaps();'><small><span id='TwoForOneText'>Stat Cap x2</span></small></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="intelligence" name="intelligence" value='10' min="10" max="110" onchange='modifyInt(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='WillpowerText'>Willpower</span></td>
+			<td class='rowhead'><span id='WillpowerText' InfoTooltip='infotooltip.willpower'>Willpower</span></td>
 			<td class='rowdata'>
 				<input style='text-align:center' type='number' id="willpower" name="willpower" value='10' min="10" max="110" onchange='modifyWill(this.value);'>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='HitPointsText'>Hit Points</span></td>
+			<td class='rowhead'><span id='HitPointsText' InfoTooltip='infotooltip.hitPoints'>Hit Points</span></td>
 			<td class='rowdata'>
 				<span id='HP'>100</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='StaminaText'>Stamina</span></td>
+			<td class='rowhead'><span id='StaminaText' InfoTooltip='infotooltip.stamina'>Stamina</span></td>
 			<td class='rowdata'>
 				<span id='Stam'>100</span>
 			</td>
 		</tr>
 		<tr>
-			<td class='rowhead'><span id='CarryWeightText'>Carry Weight</span> <small>(<span id='MaxOverText'>base max / over burdened</span>)</small></td>
+			<td class='rowhead'><span id='CarryWeightText' InfoTooltip='infotooltip.carryWeight'>Carry Weight</span> <small>(<span id='MaxOverText'>base max / over burdened</span>)</small></td>
 			<td class='rowdata'>
 				<span id='CarryWeight'>120/240</span>
 			</td>
