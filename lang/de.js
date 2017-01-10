@@ -41,6 +41,17 @@ var popupMessages = {
 					StatMax: "110 ist die maximale Punktzahl für ein Attribut",
 					StatMin: "10 ist die minimale Punktzahl für ein Attribut",
 };
+var infotooltip = {
+                  skillCap: "Einstellung der Fertigkeitengrenze (Standard in YO|MMO ist 400).",
+                  strength: "Beeinflusst den Nahkampfschaden und die maximale Gewichtsgrenze für angelegte Ausrüstung.",
+                  agility: "Beweglichkeit wird benötigt um Fernkampfwaffen benutzen zu können und erhöht deren Genauigkeit und Angriffsgeschwindigkeit.<br>Die Bewegungsgeschwindigkeit wird ebenfalls leicht erhöht.",
+                  constitution: "Jeder Punkt in Vitalität erhöht die SoftHP und die HardHP um jeweils 1,",
+                  intelligence: "Jeder Punkt in Intellekt erhöht das maximale Limit an möglichen Fertigkeitspunkten um 1,bzw. 2 wenn x2.",
+                  willpower: "Jeder Punkt in Willenskraft erhöht die Gewichtsgrenze für das Inventar um 2 und die Ausdauer um 1 (SoftStamina/HardStamina).",
+                  hitPoints: "Wenn 0 = tot.",
+                  stamina: "Wird für das Ausführen von Aktionen benötigt.",
+                  carryWeight: "Beschreibt wie viel du Tragen kannst",
+};
 /*
 Build out Nodes 
 Translations require new values for:
