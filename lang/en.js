@@ -41,6 +41,17 @@ var popupMessages = {
 					StatMax: "110 is the maximum possible value for stats",
 					StatMin: "10 is the minimum possible value for stats",
 };
+var infotooltip = {
+                  skillCap: "Placeholder",
+                  strength: "Placeholder",
+                  agility: "Placeholder",
+                  constitution: "Placeholder",
+                  intelligence: "Placeholder",
+                  willpower: "Placeholder",
+                  hitPoints: "Placeholder",
+                  stamina: "Placeholder",
+                  carryWeight: "Placeholder",
+};
 /*
 Build out Nodes 
 Translations require new values for:
